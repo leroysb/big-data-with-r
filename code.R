@@ -1,8 +1,18 @@
+if(!require(dplyr)) install.packages("dplyr", repos = "http://cran.us.r-project.org")
+if(!require(ggplot2)) install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+if(!require(DBI)) install.packages("DBI", repos = "http://cran.us.r-project.org")
+
+if(!require(odbc)) install.packages("odbc", repos = "http://cran.us.r-project.org")
+
 library(dplyr)
+library(dbplyr)
 library(ggplot2)
+library(DBI)
+library(odbc)
+
 
 # Create connection to the database
-air <- src_postgres(
+air <- dbConnect(
   dbname = 'airontime', 
   host = 'sol-eng.cjku7otn8uia.us-west-2.redshift.amazonaws.com', 
   port = '5439', 
